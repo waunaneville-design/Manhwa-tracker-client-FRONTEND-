@@ -51,3 +51,17 @@ function UpdatesPanel({ updates }) {
     </section>
   );
 }
+
+unction DetailModal({ item, onClose }) {
+  return (
+    <div className="modal-backdrop" onClick={onClose}>
+      <div className="detail-modal" onClick={(event) => event.stopPropagation()}>
+        <div className="modal-header">
+          <div>
+            <p className="eyebrow">Detail view</p>
+            <h2>{item.title}</h2>
+            <p>{item.subtitle}</p>
+          </div>
+          <button type="button" className="close-button" onClick={onClose}>
+            ×
+          </button>
