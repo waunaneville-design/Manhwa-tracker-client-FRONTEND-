@@ -182,4 +182,6 @@ const counts = useMemo(() => ({ ...statusCounts, All: seriesData.length }), [sta
     []
   );
 
+const detailItem = seriesData.find((item) => item.id === detailId);
+
 
