@@ -143,4 +143,11 @@ function SeriesCard({ item, onOpenDetail }) {
             }}
           />
         </div>
+ <button type="button" className="details-button" onClick={() => onOpenDetail(item.id)}>
+          View details
+        </button>
+      </div>
+    </article>
+  );
+}
 
