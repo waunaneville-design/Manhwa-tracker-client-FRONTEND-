@@ -85,4 +85,11 @@ unction DetailModal({ item, onClose }) {
               <strong>{item.updated}</strong>
             </div>
           </div>
+<div className="genres-row">
+            {item.genres.map((genre) => (
+              <span key={genre} className="genre-pill">
+                {genre}
+              </span>
+            ))}
+          </div>
 
