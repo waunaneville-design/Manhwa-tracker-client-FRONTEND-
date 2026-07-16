@@ -80,4 +80,9 @@ unction DetailModal({ item, onClose }) {
               <span>Status</span>
               <strong>{item.status}</strong>
             </div>
+ <div className="detail-card">
+              <span>Last Updated</span>
+              <strong>{item.updated}</strong>
+            </div>
+          </div>
 
