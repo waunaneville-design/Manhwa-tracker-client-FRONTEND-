@@ -226,4 +226,8 @@ return (
           <SeriesCard key={item.id} item={item} onOpenDetail={setDetailId} />
         ))}
       </main>
+{detailItem && <DetailModal item={detailItem} onClose={() => setDetailId(null)} />}
+    </div>
+  );
+}
 
