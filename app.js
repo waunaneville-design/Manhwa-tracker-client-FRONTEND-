@@ -150,4 +150,22 @@ function SeriesCard({ item, onOpenDetail }) {
     </article>
   );
 }
+function App() {
+  const [activeStatus, setActiveStatus] = useState('All');
+  const [search, setSearch] = useState('');
+  const [detailId, setDetailId] = useState(null);
+  const [updatesOpen, setUpdatesOpen] = useState(false);
+
+  const filteredSeries = useMemo(
+    () =>
+      seriesData.filter((item) => {
+        const matchesStatus = activeStatus === 'All' || item.status === activeStatus;
+        const lower = search.toLowerCase();
+        return (
+          matchesStatus &&
+          (item.title.toLowerCase().includes(lower) || item.subtitle.toLowerCase().includes(lower))
+        );
+      }),
+    [activeStatus, search]
+  );
 
