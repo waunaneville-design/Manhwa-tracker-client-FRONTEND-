@@ -168,4 +168,11 @@ function App() {
       }),
     [activeStatus, search]
   );
+const statusCounts = useMemo(() => {
+    const counts = { Reading: 0, Completed: 0, 'On Hold': 0, 'Plan to Read': 0, Dropped: 0 };
+    seriesData.forEach((item) => {
+      counts[item.status] += 1;
+    });
+    return counts;
+  }, []);
 
