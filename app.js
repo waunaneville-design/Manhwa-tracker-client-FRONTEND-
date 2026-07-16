@@ -175,4 +175,11 @@ const statusCounts = useMemo(() => {
     });
     return counts;
   }, []);
+const counts = useMemo(() => ({ ...statusCounts, All: seriesData.length }), [statusCounts]);
+
+  const newChapters = useMemo(
+    () => seriesData.reduce((sum, item) => sum + Math.max(0, item.progress.latest - item.progress.read), 0),
+    []
+  );
+
 
