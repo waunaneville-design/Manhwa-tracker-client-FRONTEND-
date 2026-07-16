@@ -230,4 +230,20 @@ return (
     </div>
   );
 }
+try {
+  const rootElement = document.getElementById('root');
+  if (!rootElement) throw new Error('Root element not found.');
+  ReactDOM.createRoot(rootElement).render(<App />);
+} catch (err) {
+  console.error(err);
+  document.body.innerHTML = `
+    <div style="min-height:100vh;background:#05060c;color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;">
+      <div style="max-width:700px;border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:28px;background:rgba(15,23,42,.95);box-shadow:0 24px 60px rgba(0,0,0,.45);">
+        <h1 style="margin-top:0;font-size:1.8rem;">App failed to load</h1>
+        <pre style="white-space:pre-wrap;color:#f8fafc;font-size:.95rem;line-height:1.5;">${err.message}</pre>
+        <p style="color:#cbd5e1;margin-top:16px;">Open the browser console for details.</p>
+      </div>
+    </div>
+  `;
+}
 
