@@ -121,4 +121,15 @@ function SeriesCard({ item, onOpenDetail }) {
           {item.title[0]}
         </span>
       </div>
+<div className="card-body">
+        <div className="card-meta">
+          <span className={`badge status-${statusClass}`}>{item.status}</span>
+          <span className="score">{item.score.toFixed(1)}</span>
+        </div>
+        <h2>{item.title}</h2>
+        <p>{item.subtitle}</p>
+        <div className="progress-row">
+          <span>
+            {item.progress.read}/{item.progress.latest}
+          </span>
 
