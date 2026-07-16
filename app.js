@@ -29,3 +29,25 @@ function FilterTabs({ statuses, activeStatus, counts, onSelectStatus }) {
     </div>
   );
 }
+
+function UpdatesPanel({ updates }) {
+  return (
+    <section className="updates-panel">
+      <div className="updates-header">
+        <h2>Latest Chapter Releases</h2>
+        <span>{updates.length} items</span>
+      </div>
+      <div className="updates-list">
+        {updates.map((update) => (
+          <div key={`${update.series}-${update.time}`} className="update-item">
+            <div>
+              <strong>{update.series}</strong>
+              <p>{update.note}</p>
+            </div>
+            <span>{update.time}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
