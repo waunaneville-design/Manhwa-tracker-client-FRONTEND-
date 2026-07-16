@@ -52,7 +52,7 @@ function UpdatesPanel({ updates }) {
   );
 }
 
-unction DetailModal({ item, onClose }) {
+function DetailModal({ item, onClose }) {
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <div className="detail-modal" onClick={(event) => event.stopPropagation()}>
