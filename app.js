@@ -114,4 +114,11 @@ function SeriesCard({ item, onOpenDetail }) {
       className="series-card"
       style={{ boxShadow: `0 24px 60px ${item.accent}30`, borderColor: `${item.accent}40` }}
     >
+ <div className="card-visual">
+        <img className="cover-image" src={item.cover} alt={`${item.title} cover`} />
+        <div className="visual-overlay" />
+        <span className="cover-initial" style={{ color: item.accent, textShadow: `0 0 30px ${item.accent}` }}>
+          {item.title[0]}
+        </span>
+      </div>
 
