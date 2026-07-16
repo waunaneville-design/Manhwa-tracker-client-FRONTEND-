@@ -92,4 +92,16 @@ unction DetailModal({ item, onClose }) {
               </span>
             ))}
           </div>
+ <div className="chapter-grid">
+            {Array.from({ length: 8 }).map((_, idx) => (
+              <div key={idx} className="chapter-pill">
+                Ch {idx * 10 + 1}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
