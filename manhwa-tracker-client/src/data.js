@@ -1,0 +1,33 @@
+export const seriesData = [
+  { id: 'sl', title: 'Solo Leveling', subtitle: 'Action / Fantasy', cover: '/assets/sl.svg', progress: { read: 134, latest: 171 }, status: 'Reading', score: 9.4, updated: '2h ago', genres: ['Action', 'Fantasy', 'Adventure'], accent: '#8b5cf6' },
+  { id: 'or', title: 'Omniscient Reader', subtitle: 'Isekai / Web Novel', cover: '/assets/or.svg', progress: { read: 125, latest: 140 }, status: 'Reading', score: 9.1, updated: '5h ago', genres: ['Isekai', 'Drama', 'Fantasy'], accent: '#0ea5e9' },
+  { id: 'jk', title: 'Jujutsu Kaisen', subtitle: 'Supernatural / Shonen', cover: '/assets/jk.svg', progress: { read: 233, latest: 251 }, status: 'Reading', score: 8.9, updated: '3h ago', genres: ['Action', 'Supernatural', 'School'], accent: '#f97316' },
+  { id: 'vs', title: 'Vinland Saga', subtitle: 'Historical / Drama', cover: '/assets/vs.svg', progress: { read: 190, latest: 199 }, status: 'Reading', score: 9.7, updated: '1d ago', genres: ['Historical', 'Drama', 'Seinen'], accent: '#e11d48' },
+  { id: 'slr', title: 'Second Life Ranker', subtitle: 'Regression Revenge', cover: '/assets/slr.svg', progress: { read: 118, latest: 134 }, status: 'Reading', score: 8.5, updated: '7h ago', genres: ['Revenge', 'Fantasy', 'Magic'], accent: '#22c55e' },
+  { id: 'el', title: 'Eleceed', subtitle: 'Superpower Action-Comedy', cover: '/assets/el.svg', progress: { read: 245, latest: 268 }, status: 'Reading', score: 8.3, updated: '6h ago', genres: ['Action', 'Comedy', 'Supernatural'], accent: '#d946ef' },
+  { id: 'lk', title: 'Lookism', subtitle: 'Slice of Life / Action', cover: '/assets/lk.svg', progress: { read: 310, latest: 478 }, status: 'On Hold', score: 8.0, updated: '2d ago', genres: ['Slice of Life', 'Drama', 'School'], accent: '#0f766e' },
+  { id: 'goh', title: 'The God of High School', subtitle: 'Martial Arts Tournament', cover: '/assets/goh.svg', progress: { read: 570, latest: 570 }, status: 'Completed', score: 8.8, updated: 'Completed', genres: ['Martial Arts', 'Tournament', 'Fantasy'], accent: '#f59e0b' },
+  { id: 'ml', title: 'Murim Login', subtitle: 'Martial Arts + Gaming', cover: '/assets/ml.svg', progress: { read: 155, latest: 171 }, status: 'Reading', score: 8.2, updated: '11h ago', genres: ['Action', 'Gaming', 'Martial Arts'], accent: '#14b8a6' },
+  { id: 'kth', title: 'Kill the Hero', subtitle: 'Regression System', cover: '/assets/kth.svg', progress: { read: 252, latest: 252 }, status: 'Completed', score: 8.6, updated: 'Completed', genres: ['Revenge', 'Action', 'Fantasy'], accent: '#f43f5e' },
+  { id: 'sss', title: 'Skeleton Soldier', subtitle: 'Dark Fantasy Regression', cover: '/assets/sss.svg', progress: { read: 188, latest: 201 }, status: 'Reading', score: 8.4, updated: '8h ago', genres: ['Dark Fantasy', 'Regression', 'Action'], accent: '#4f46e5' },
+  { id: 'rv', title: 'Reborn as a Vending Machine', subtitle: 'Comedy Isekai', cover: '/assets/rv.svg', progress: { read: 0, latest: 61 }, status: 'Plan to Read', score: 7.9, updated: 'New', genres: ['Comedy', 'Isekai', 'Slice of Life'], accent: '#7c3aed' },
+  { id: 'wntn', title: 'Worn and Torn Newbie', subtitle: 'Gaming Regression', cover: '/assets/wntn.svg', progress: { read: 142, latest: 160 }, status: 'Reading', score: 8.1, updated: '4h ago', genres: ['Gaming', 'Regression', 'Action'], accent: '#0ea5e9' },
+  { id: 'hr', title: 'Is This Hero for Real?', subtitle: 'Comedy Isekai', cover: '/assets/hr.svg', progress: { read: 98, latest: 112 }, status: 'Reading', score: 7.8, updated: 'Today', genres: ['Comedy', 'Isekai', 'Action'], accent: '#f97316' },
+  { id: 'chd', title: 'Chronicles of the Heavenly Demon', subtitle: 'Cultivation', cover: '/assets/chd.svg', progress: { read: 235, latest: 235 }, status: 'Completed', score: 8.7, updated: 'Completed', genres: ['Cultivation', 'Fantasy', 'Martial Arts'], accent: '#16a34a' },
+  { id: 'blb', title: 'I Became a Legendary Biologist', subtitle: 'Sci-Fi Regression', cover: '/assets/blb.svg', progress: { read: 0, latest: 78 }, status: 'Plan to Read', score: 8.0, updated: 'New', genres: ['Sci-Fi', 'Regression', 'Adventure'], accent: '#0f172a' },
+  { id: 'c', title: 'Chain of Fools', subtitle: 'Crime Thriller', cover: '/assets/c.svg', progress: { read: 42, latest: 54 }, status: 'Reading', score: 8.0, updated: '9h ago', genres: ['Crime', 'Thriller', 'Drama'], accent: '#f59e0b' },
+  { id: 'tst', title: 'The Strongest Tank', subtitle: 'Game World Rebirth', cover: '/assets/tst.svg', progress: { read: 153, latest: 187 }, status: 'Reading', score: 8.2, updated: '5h ago', genres: ['Gaming', 'Action', 'Adventure'], accent: '#6366f1' },
+  { id: 'db', title: 'Demon Belial', subtitle: 'Fantasy Action', cover: '/assets/db.svg', progress: { read: 114, latest: 130 }, status: 'Reading', score: 7.7, updated: '12h ago', genres: ['Fantasy', 'Action', 'Supernatural'], accent: '#e11d48' },
+  { id: 'mt', title: 'Mythic Trek', subtitle: 'Epic Adventure', cover: '/assets/mt.svg', progress: { read: 78, latest: 92 }, status: 'Reading', score: 8.3, updated: 'Today', genres: ['Adventure', 'Fantasy', 'Epic'], accent: '#22c55e' },
+  { id: 'ak', title: 'Abyssal King', subtitle: 'Dark Supernatural', cover: '/assets/ak.svg', progress: { read: 189, latest: 200 }, status: 'Reading', score: 8.5, updated: '7h ago', genres: ['Dark Fantasy', 'Supernatural', 'Action'], accent: '#0ea5e9' },
+  { id: 'sot', title: 'Sleep of the Nine', subtitle: 'Mystery Fantasy', cover: '/assets/sot.svg', progress: { read: 65, latest: 65 }, status: 'Completed', score: 8.6, updated: 'Completed', genres: ['Mystery', 'Fantasy', 'Drama'], accent: '#8b5cf6' },
+  { id: 'go', title: 'Golem Overlord', subtitle: 'High Fantasy', cover: '/assets/go.svg', progress: { read: 20, latest: 46 }, status: 'On Hold', score: 7.9, updated: '3d ago', genres: ['High Fantasy', 'Adventure', 'Magic'], accent: '#d946ef' },
+];
+
+export const updates = [
+  { series: 'Skeleton Soldier', note: 'Chapter 201 released', time: '1h ago' },
+  { series: 'Murim Login', note: 'Chapter 171 available', time: '2h ago' },
+  { series: 'Eleceed', note: 'New batch dropped', time: '4h ago' },
+  { series: 'Is This Hero for Real?', note: 'Chapter 112 read', time: 'Today' },
+  { series: 'Reborn as a Vending Machine', note: 'New title added', time: 'Today' },
+];
