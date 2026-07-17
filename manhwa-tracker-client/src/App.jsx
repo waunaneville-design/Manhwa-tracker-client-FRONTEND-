@@ -108,6 +108,7 @@ function DetailModal({ item, onClose }) {
 }
 
 function SeriesCard({ item, onOpenDetail }) {
+  const [imageFailed, setImageFailed] = useState(false);
   const behind = item.progress.latest - item.progress.read;
   const ratio = item.progress.latest === 0 ? 0 : (item.progress.read / item.progress.latest) * 100;
   const statusClass = item.status.replace(/\s+/g, '-').toLowerCase();
@@ -118,11 +119,30 @@ function SeriesCard({ item, onOpenDetail }) {
       style={{ boxShadow: `0 24px 60px ${item.accent}30`, borderColor: `${item.accent}40` }}
     >
       <div className="card-visual">
-        <img className="cover-image" src={item.cover} alt={`${item.title} cover`} />
+        {!imageFailed ? (
+          <img
+            className="cover-image"
+            src={item.cover}
+            alt={`${item.title} cover`}
+            onError={() => setImageFailed(true)}
+          />
+        ) : (
+          <div
+            className="cover-fallback"
+            style={{ backgroundImage: `linear-gradient(135deg, ${item.accent} 0%, rgba(2, 6, 23, 0.94) 100%)` }}
+          >
+            <span className="cover-initial" style={{ color: '#fff', textShadow: '0 0 24px rgba(255,255,255,0.2)' }}>
+              {item.title[0]}
+            </span>
+            <span className="cover-caption">{item.subtitle}</span>
+          </div>
+        )}
         <div className="visual-overlay" />
-        <span className="cover-initial" style={{ color: item.accent, textShadow: `0 0 30px ${item.accent}` }}>
-          {item.title[0]}
-        </span>
+        {!imageFailed && (
+          <span className="cover-initial" style={{ color: item.accent, textShadow: `0 0 30px ${item.accent}` }}>
+            {item.title[0]}
+          </span>
+        )}
       </div>
       <div className="card-body">
         <div className="card-meta">
