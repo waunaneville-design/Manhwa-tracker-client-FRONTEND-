@@ -3,6 +3,10 @@ const statuses = ['All', 'Reading', 'Completed', 'On Hold', 'Plan to Read', 'Dro
 // 🔹 Added useEffect here
 const { useState, useMemo, useEffect } = React;
 
+// 🔹 Added these two states
+const [seriesData, setSeriesData] = useState([]);
+const [updates, setUpdates] = useState([]);
+
 
 function HeaderStats({ total, reading, completed, newChapters }) {
   return (
