@@ -1,5 +1,8 @@
 const { useState, useMemo } = React;
 const statuses = ['All', 'Reading', 'Completed', 'On Hold', 'Plan to Read', 'Dropped'];
+// 🔹 Added useEffect here
+const { useState, useMemo, useEffect } = React;
+
 
 function HeaderStats({ total, reading, completed, newChapters }) {
   return (
