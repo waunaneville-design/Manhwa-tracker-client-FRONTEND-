@@ -36,7 +36,7 @@ function UpdatesPanel({ updates }) {
   return (
     <section className="updates-panel">
       <div className="updates-header">
-        <h2>Latest Chapter Releases</h2>
+        <h2>Latest Chapters Releases</h2>
         <span>{updates.length} items</span>
       </div>
       <div className="updates-list">
