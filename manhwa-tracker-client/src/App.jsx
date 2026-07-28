@@ -112,3 +112,9 @@ function SeriesCard({ item, onOpenDetail }) {
   const behind = item.progress.latest - item.progress.read;
   const ratio = item.progress.latest === 0 ? 0 : (item.progress.read / item.progress.latest) * 100;
   const statusClass = item.status.replace(/\s+/g, '-').toLowerCase();
+
+  return (
+    <article
+      className="series-card"
+      style={{ boxShadow: `0 24px 60px ${item.accent}30`, borderColor: `${item.accent}40` }}
+    >
