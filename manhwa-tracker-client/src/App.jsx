@@ -32,3 +32,10 @@ function FilterTabs({ statuses, activeStatus, counts, onSelectStatus }) {
   );
 }
 
+function UpdatesPanel({ updates }) {
+  return (
+    <section className="updates-panel">
+      <div className="updates-header">
+        <h2>Latest Chapters Releases</h2>
+        <span>{updates.length} items</span>
+      </div>
