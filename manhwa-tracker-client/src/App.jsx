@@ -127,3 +127,7 @@ function SeriesCard({ item, onOpenDetail }) {
             onError={() => setImageFailed(true)}
           />
         ) : (
+<div
+            className="cover-fallback"
+            style={{ backgroundImage: `linear-gradient(135deg, ${item.accent} 0%, rgba(2, 6, 23, 0.94) 100%)` }}
+          >
