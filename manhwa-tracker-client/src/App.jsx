@@ -118,3 +118,12 @@ function SeriesCard({ item, onOpenDetail }) {
       className="series-card"
       style={{ boxShadow: `0 24px 60px ${item.accent}30`, borderColor: `${item.accent}40` }}
     >
+ <div className="card-visual">
+        {!imageFailed ? (
+          <img
+            className="cover-image"
+            src={item.cover}
+            alt={`${item.title} cover`}
+            onError={() => setImageFailed(true)}
+          />
+        ) : (
