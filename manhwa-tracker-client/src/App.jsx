@@ -234,3 +234,15 @@ Updates panel
       </header>
 
 {updatesOpen && <UpdatesPanel updates={updates} />}
+
+  <div className="toolbar">
+        <FilterTabs statuses={statuses} activeStatus={activeStatus} counts={counts} onSelectStatus={setActiveStatus} />
+        <div className="search-wrap">
+          <input
+            type="search"
+            placeholder="Search series..."
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+          />
+        </div>
+      </div>
