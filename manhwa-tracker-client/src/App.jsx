@@ -253,3 +253,9 @@ Updates panel
         ))}
       </main>
 
+  {detailItem && <DetailModal item={detailItem} onClose={() => setDetailId(null)} />}
+    </div>
+  );
+}
+
+export default App;
