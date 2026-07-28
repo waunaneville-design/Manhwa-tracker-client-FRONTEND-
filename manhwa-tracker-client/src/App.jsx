@@ -157,3 +157,11 @@ function SeriesCard({ item, onOpenDetail }) {
           </span>
           <span>{behind > 0 ? `+${behind} new` : 'Up to date'}</span>
         </div>
+<div className="progress-bar">
+          <div
+            className="progress-fill"
+            style={{
+              width: `${Math.min(ratio, 100)}%`,
+              background: `linear-gradient(90deg, ${item.accent}, rgba(255,255,255,0.5))`,
+            }}
+          />
