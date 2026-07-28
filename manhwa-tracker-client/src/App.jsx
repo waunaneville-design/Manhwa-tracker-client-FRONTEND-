@@ -64,3 +64,13 @@ function DetailModal({ item, onClose }) {
             <h2>{item.title}</h2>
             <p>{item.subtitle}</p>
           </div>
+<button type="button" className="close-button" onClick={onClose}>
+            ×
+          </button>
+        </div>
+        <div className="modal-content">
+          <div className="detail-grid">
+            <div className="detail-card">
+              <span>Total Chapters</span>
+              <strong>{item.progress.latest}</strong>
+            </div>
