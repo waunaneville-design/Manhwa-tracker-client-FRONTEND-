@@ -208,3 +208,4 @@ function App() {
     []
   );
 
+const detailItem = seriesData.find((item) => item.id === detailId);
