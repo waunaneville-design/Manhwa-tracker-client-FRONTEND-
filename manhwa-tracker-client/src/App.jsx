@@ -246,3 +246,10 @@ Updates panel
           />
         </div>
       </div>
+
+<main className="grid-shell">
+        {filteredSeries.map((item) => (
+          <SeriesCard key={item.id} item={item} onOpenDetail={setDetailId} />
+        ))}
+      </main>
+
