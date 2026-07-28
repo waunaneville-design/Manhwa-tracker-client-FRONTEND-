@@ -74,3 +74,11 @@ function DetailModal({ item, onClose }) {
               <span>Total Chapters</span>
               <strong>{item.progress.latest}</strong>
             </div>
+            <div className="detail-card">
+              <span>Current</span>
+              <strong>{item.progress.read}</strong>
+            </div>
+            <div className="detail-card">
+              <span>Status</span>
+              <strong>{item.status}</strong>
+            </div>
