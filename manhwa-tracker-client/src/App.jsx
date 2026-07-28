@@ -131,3 +131,15 @@ function SeriesCard({ item, onOpenDetail }) {
             className="cover-fallback"
             style={{ backgroundImage: `linear-gradient(135deg, ${item.accent} 0%, rgba(2, 6, 23, 0.94) 100%)` }}
           >
+<span className="cover-initial" style={{ color: '#fff', textShadow: '0 0 24px rgba(255,255,255,0.2)' }}>
+              {item.title[0]}
+            </span>
+            <span className="cover-caption">{item.subtitle}</span>
+          </div>
+        )}
+        <div className="visual-overlay" />
+        {!imageFailed && (
+          <span className="cover-initial" style={{ color: item.accent, textShadow: `0 0 30px ${item.accent}` }}>
+            {item.title[0]}
+          </span>
+        )}
