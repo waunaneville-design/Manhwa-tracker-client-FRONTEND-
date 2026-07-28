@@ -173,3 +173,9 @@ function SeriesCard({ item, onOpenDetail }) {
     </article>
   );
 }
+
+function App() {
+  const [activeStatus, setActiveStatus] = useState('All');
+  const [search, setSearch] = useState('');
+  const [detailId, setDetailId] = useState(null);
+  const [updatesOpen, setUpdatesOpen] = useState(false);
