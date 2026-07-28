@@ -200,3 +200,5 @@ function App() {
     });
     return counts;
   }, []);
+
+   const counts = useMemo(() => ({ ...statusCounts, All: seriesData.length }), [statusCounts]);
