@@ -232,3 +232,5 @@ Updates panel
           />
         </div>
       </header>
+
+{updatesOpen && <UpdatesPanel updates={updates} />}
