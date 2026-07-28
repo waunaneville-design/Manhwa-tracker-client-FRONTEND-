@@ -106,3 +106,9 @@ function DetailModal({ item, onClose }) {
     </div>
   );
 }
+
+function SeriesCard({ item, onOpenDetail }) {
+  const [imageFailed, setImageFailed] = useState(false);
+  const behind = item.progress.latest - item.progress.read;
+  const ratio = item.progress.latest === 0 ? 0 : (item.progress.read / item.progress.latest) * 100;
+  const statusClass = item.status.replace(/\s+/g, '-').toLowerCase();
