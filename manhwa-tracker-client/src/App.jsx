@@ -165,3 +165,11 @@ function SeriesCard({ item, onOpenDetail }) {
               background: `linear-gradient(90deg, ${item.accent}, rgba(255,255,255,0.5))`,
             }}
           />
+</div>
+        <button type="button" className="details-button" onClick={() => onOpenDetail(item.id)}>
+          View details
+        </button>
+      </div>
+    </article>
+  );
+}
