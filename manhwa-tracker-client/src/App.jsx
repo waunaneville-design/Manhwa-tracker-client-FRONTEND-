@@ -209,3 +209,16 @@ function App() {
   );
 
 const detailItem = seriesData.find((item) => item.id === detailId);
+
+ return (
+    <div className="page-shell">
+      <header className="app-header">
+        <div>
+          <p className="eyebrow">MangaTrack</p>
+          <h1>Dark kinetic tracker</h1>
+          <p className="subhead">
+            Track reading, latest chapters, and upcoming releases across manga, manhwa, and manhua.
+          </p>
+        </div>
+        <div className="header-actions">
+          <button type="button" className="updates-toggle" onClick={() => setUpdatesOpen(!updatesOpen)}>
