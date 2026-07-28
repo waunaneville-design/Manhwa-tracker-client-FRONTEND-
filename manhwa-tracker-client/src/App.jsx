@@ -222,3 +222,13 @@ const detailItem = seriesData.find((item) => item.id === detailId);
         </div>
         <div className="header-actions">
           <button type="button" className="updates-toggle" onClick={() => setUpdatesOpen(!updatesOpen)}>
+Updates panel
+          </button>
+          <HeaderStats
+            total={seriesData.length}
+            reading={statusCounts.Reading}
+            completed={statusCounts.Completed}
+            newChapters={newChapters}
+          />
+        </div>
+      </header>
