@@ -82,3 +82,15 @@ function DetailModal({ item, onClose }) {
               <span>Status</span>
               <strong>{item.status}</strong>
             </div>
+<div className="detail-card">
+              <span>Last Updated</span>
+              <strong>{item.updated}</strong>
+            </div>
+          </div>
+          <div className="genres-row">
+            {item.genres.map((genre) => (
+              <span key={genre} className="genre-pill">
+                {genre}
+              </span>
+            ))}
+          </div>
