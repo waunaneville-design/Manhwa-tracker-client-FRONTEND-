@@ -263,6 +263,15 @@ const detailItem = seriesData.find((item) => item.id === detailId);
           onChange={(event) => setEmail(event.target.value)}
         />
 
+        <label className="auth-label" htmlFor="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          placeholder="••••••••"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
+
         <div className="auth-actions">
           {!isLoggedIn ? (
             <>
