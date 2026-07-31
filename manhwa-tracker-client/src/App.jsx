@@ -306,7 +306,7 @@ const [password, setPassword] = useState('');
 
           <button type="button" className="auth-button secondary" onClick={handleSignup}>
             Sign up
-</button>
+          </button>
 
         </div>
 

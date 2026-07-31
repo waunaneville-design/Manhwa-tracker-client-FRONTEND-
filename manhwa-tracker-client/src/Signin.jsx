@@ -4,33 +4,41 @@ import { useState } from 'react';
 function SignIn() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/signup`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password })
-    });
-    const data = await res.json();
-    console.log(data);
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/signup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await res.json();
+      setMessage(data.message || 'Signup failed.');
+    } catch (err) {
+      setMessage('Server error. Please try again.');
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input value={username} onChange={(e) => setUsername(e.target.value)} />
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+    <form onSubmit={handleSignup}>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
       <button type="submit">Sign Up</button>
+      {message && <p>{message}</p>}
     </form>
   );
 }
 
-const handleSignup = async () => {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/api/signup`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username: email, password })
-  });
-  const data = await res.json();
-  setAuthMessage(data.message || 'Signup failed.');
-};
+export default SignIn;
