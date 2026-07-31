@@ -243,9 +243,6 @@ const detailItem = seriesData.find((item) => item.id === detailId);
 };
 
 
-const [password, setPassword] = useState('');
-
-
   const handleLogout = () => {
     setIsLoggedIn(false);
     setAuthMessage('You have been logged out.');
@@ -280,13 +277,16 @@ const [password, setPassword] = useState('');
           onChange={(event) => setEmail(event.target.value)}
         />
 
-        <input
-          id="password"
-          type="password"
-          placeholder="••••••••"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-       />
+      const [password, setPassword] = useState('');
+
+      <input
+        id="password"
+        type="password"
+        placeholder="••••••••"
+        value={password}
+        onChange={(event) => setPassword(event.target.value)}
+      />
+
 
         <div className="auth-actions">
           {!isLoggedIn ? (
