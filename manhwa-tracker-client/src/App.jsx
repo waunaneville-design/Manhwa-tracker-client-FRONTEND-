@@ -230,6 +230,9 @@ const detailItem = seriesData.find((item) => item.id === detailId);
     setAuthMessage(`Welcome back, ${email}!`);
   };
 
+const [password, setPassword] = useState('');
+
+
   const handleLogout = () => {
     setIsLoggedIn(false);
     setAuthMessage('You have been logged out.');
