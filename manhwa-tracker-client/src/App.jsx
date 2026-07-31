@@ -174,6 +174,30 @@ function SeriesCard({ item, onOpenDetail }) {
     </article>
   );
 }
+const handleSignup = async () => {
+  if (!email.trim() || !password.trim()) {
+    setAuthMessage('Please enter both email and password.');
+    return;
+  }
+
+  try {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/signup`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: email, password })
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      setAuthMessage(data.message || 'Signup successful.');
+    } else {
+      setAuthMessage(data.error || 'Signup failed.');
+    }
+  } catch (err) {
+    setAuthMessage('Server error. Please try again.');
+  }
+};
 
 function App() {
   const [activeStatus, setActiveStatus] = useState('All');
