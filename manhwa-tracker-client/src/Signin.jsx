@@ -25,4 +25,14 @@ function SignIn() {
   );
 }
 
+const handleSignup = async () => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/api/signup`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password })
+  });
+  console.log(await res.json());
+};
+
+
 export default SignIn;

@@ -254,6 +254,7 @@ const detailItem = seriesData.find((item) => item.id === detailId);
           <h2>{isLoggedIn ? 'Signed in' : 'Sign in'}</h2>
         </div>
 
+
         <label className="auth-label" htmlFor="email">Email</label>
         <input
           id="email"
@@ -272,7 +273,6 @@ const detailItem = seriesData.find((item) => item.id === detailId);
           onChange={(event) => setEmail(event.target.value)}
         />
        
-
         <div className="auth-actions">
           {!isLoggedIn ? (
             <>
