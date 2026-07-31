@@ -1,7 +1,7 @@
 // SignIn.jsx
 import { useState } from 'react';
 
-function SignIn() {
+function SignIn({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -16,6 +16,10 @@ function SignIn() {
       });
       const data = await res.json();
       setMessage(data.message || 'Signup failed.');
+
+      if (res.ok) {
+        onLogin(username); // tell App.jsx we’re logged in
+      }
     } catch (err) {
       setMessage('Server error. Please try again.');
     }
