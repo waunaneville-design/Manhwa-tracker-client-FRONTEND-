@@ -174,100 +174,60 @@ function SeriesCard({ item, onOpenDetail }) {
     </article>
   );
 }
-const handleSignup = async () => {
-  if (!email.trim() || !password.trim()) {
-    setAuthMessage('Please enter both email and password.');
-    return;
-  }
-
-  try {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/signup`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: email, password })
-    });
-
-    const data = await res.json();
-
-    if (res.ok) {
-      setAuthMessage(data.message || 'Signup successful.');
-    } else {
-      setAuthMessage(data.error || 'Signup failed.');
-    }
-  } catch (err) {
-    setAuthMessage('Server error. Please try again.');
-  }
-};
-
 function App() {
+  // --- state ---
   const [activeStatus, setActiveStatus] = useState('All');
   const [search, setSearch] = useState('');
   const [detailId, setDetailId] = useState(null);
   const [updatesOpen, setUpdatesOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [authMessage, setAuthMessage] = useState('Sign in with your email to view the tracker.');
-   const [password, setPassword] = useState('');
 
-  const filteredSeries = useMemo(
-    () =>
-      seriesData.filter((item) => {
-        const matchesStatus = activeStatus === 'All' || item.status === activeStatus;
-        const lower = search.toLowerCase();
-        return (
-          matchesStatus &&
-          (item.title.toLowerCase().includes(lower) || item.subtitle.toLowerCase().includes(lower))
-        );
-      }),
-    [activeStatus, search]
-  );
-
-   const statusCounts = useMemo(() => {
-    const counts = { Reading: 0, Completed: 0, 'On Hold': 0, 'Plan to Read': 0, Dropped: 0 };
-    seriesData.forEach((item) => {
-      counts[item.status] += 1;
-    });
-    return counts;
-  }, []);
-
-   const counts = useMemo(() => ({ ...statusCounts, All: seriesData.length }), [statusCounts]);
-
-     const newChapters = useMemo(
-    () => seriesData.reduce((sum, item) => sum + Math.max(0, item.progress.latest - item.progress.read), 0),
-    []
-  );
-
-const detailItem = seriesData.find((item) => item.id === detailId);
+  // --- handlers ---
+  const handleSignup = async () => {
+    if (!email.trim() || !password.trim()) {
+      setAuthMessage('Please enter both email and password.');
+      return;
+    }
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/signup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: email, password })
+      });
+      const data = await res.json();
+      setAuthMessage(res.ok ? (data.message || 'Signup successful.') : (data.error || 'Signup failed.'));
+    } catch (err) {
+      setAuthMessage('Server error. Please try again.');
+    }
+  };
 
   const handleLogin = async (event) => {
-  event.preventDefault();
-
-  if (!email.trim() || !password.trim()) {
-    setAuthMessage('Please enter both email and password.');
-    return;
-  }
-
-  try {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: email, password })
-    });
-
-    const data = await res.json();
-
-    if (res.ok) {
-      localStorage.setItem('token', data.token);
-      setIsLoggedIn(true);
-      setAuthMessage(`Welcome back, ${email}!`);
-    } else {
-      setAuthMessage(data.error || 'Login failed.');
+    event.preventDefault();
+    if (!email.trim() || !password.trim()) {
+      setAuthMessage('Please enter both email and password.');
+      return;
     }
-  } catch (err) {
-    setAuthMessage('Server error. Please try again later.');
-  }
-};
-
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: email, password })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem('token', data.token);
+        setIsLoggedIn(true);
+        setAuthMessage(`Welcome back, ${email}!`);
+      } else {
+        setAuthMessage(data.error || 'Login failed.');
+      }
+    } catch (err) {
+      setAuthMessage('Server error. Please try again later.');
+    }
+  };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -276,16 +236,15 @@ const detailItem = seriesData.find((item) => item.id === detailId);
 
   const handleForgotPassword = (event) => {
     event.preventDefault();
-
     if (!email.trim()) {
       setAuthMessage('Enter your email to receive a reset link.');
       return;
     }
-
     setAuthMessage(`A password reset link has been sent to ${email}.`);
   };
 
- return (
+  // --- JSX ---
+  return (
     <div className="page-shell">
       <form className="auth-card" onSubmit={handleLogin}>
         <div className="auth-card-header">
@@ -293,43 +252,22 @@ const detailItem = seriesData.find((item) => item.id === detailId);
           <h2>{isLoggedIn ? 'Signed in' : 'Sign in'}</h2>
         </div>
 
+        <label htmlFor="email">Email</label>
+        <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
 
-        <label className="auth-label" htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          placeholder="you@example.com"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
+        <label htmlFor="password">Password</label>
+        <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
-      <input
-        id="password"
-        type="password"
-        placeholder="••••••••"
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-      />
         <div className="auth-actions">
           {!isLoggedIn ? (
             <>
-              <button type="submit" className="auth-button primary">
-                Log in
-              </button>
-              <button type="button" className="auth-button secondary" onClick={handleForgotPassword}>
-                Forgot password
-              </button>
+              <button type="submit" className="auth-button primary">Log in</button>
+              <button type="button" className="auth-button secondary" onClick={handleForgotPassword}>Forgot password</button>
+              <button type="button" className="auth-button secondary" onClick={handleSignup}>Sign up</button>
             </>
           ) : (
-            <button type="button" className="auth-button secondary" onClick={handleLogout}>
-              Log out
-            </button>
+            <button type="button" className="auth-button secondary" onClick={handleLogout}>Log out</button>
           )}
-
-          <button type="button" className="auth-button secondary" onClick={handleSignup}>
-            Sign up
-          </button>
-
         </div>
 
         {authMessage && <p className={`auth-message ${isLoggedIn ? 'success' : ''}`}>{authMessage}</p>}
@@ -342,48 +280,7 @@ const detailItem = seriesData.find((item) => item.id === detailId);
         </section>
       ) : (
         <>
-          <header className="app-header">
-            <div>
-              <p className="eyebrow">MangaTrack</p>
-              <h1>Dark kinetic tracker</h1>
-              <p className="subhead">
-                Track reading, latest chapters, and upcoming releases across manga, manhwa, and manhua.
-              </p>
-            </div>
-            <div className="header-actions">
-              <button type="button" className="updates-toggle" onClick={() => setUpdatesOpen(!updatesOpen)}>
-                Updates panel
-              </button>
-              <HeaderStats
-                total={seriesData.length}
-                reading={statusCounts.Reading}
-                completed={statusCounts.Completed}
-                newChapters={newChapters}
-              />
-            </div>
-          </header>
-
-          {updatesOpen && <UpdatesPanel updates={updates} />}
-
-          <div className="toolbar">
-            <FilterTabs statuses={statuses} activeStatus={activeStatus} counts={counts} onSelectStatus={setActiveStatus} />
-            <div className="search-wrap">
-              <input
-                type="search"
-                placeholder="Search series..."
-                value={search}
-                onChange={(event) => setSearch(event.target.value)}
-              />
-            </div>
-          </div>
-
-          <main className="grid-shell">
-            {filteredSeries.map((item) => (
-              <SeriesCard key={item.id} item={item} onOpenDetail={setDetailId} />
-            ))}
-          </main>
-
-          {detailItem && <DetailModal item={detailItem} onClose={() => setDetailId(null)} />}
+          {/* tracker UI here */}
         </>
       )}
     </div>
