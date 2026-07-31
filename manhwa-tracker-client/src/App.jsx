@@ -213,22 +213,35 @@ function App() {
 
 const detailItem = seriesData.find((item) => item.id === detailId);
 
-  const handleLogin = (event) => {
-    event.preventDefault();
+  const handleLogin = async (event) => {
+  event.preventDefault();
 
-    if (!email.trim()) {
-      setAuthMessage('Please enter your email to continue.');
-      return;
+  if (!email.trim() || !password.trim()) {
+    setAuthMessage('Please enter both email and password.');
+    return;
+  }
+
+  try {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: email, password })
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      localStorage.setItem('token', data.token);
+      setIsLoggedIn(true);
+      setAuthMessage(`Welcome back, ${email}!`);
+    } else {
+      setAuthMessage(data.error || 'Login failed.');
     }
+  } catch (err) {
+    setAuthMessage('Server error. Please try again later.');
+  }
+};
 
-    if (!email.includes('@') || !email.includes('.')) {
-      setAuthMessage('Please enter a valid email address.');
-      return;
-    }
-
-    setIsLoggedIn(true);
-    setAuthMessage(`Welcome back, ${email}!`);
-  };
 
 const [password, setPassword] = useState('');
 
