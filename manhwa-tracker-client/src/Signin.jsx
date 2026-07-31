@@ -1,4 +1,3 @@
-// SignIn.jsx
 import { useState } from 'react';
 
 function SignIn({ onLogin }) {
