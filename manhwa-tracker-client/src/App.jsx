@@ -183,6 +183,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState('');
   const [authMessage, setAuthMessage] = useState('Sign in with your email to view the tracker.');
+   const [password, setPassword] = useState('');
 
   const filteredSeries = useMemo(
     () =>
@@ -278,8 +279,6 @@ const detailItem = seriesData.find((item) => item.id === detailId);
           onChange={(event) => setEmail(event.target.value)}
         />
 
-      const [password, setPassword] = useState('');
-
       <input
         id="password"
         type="password"
@@ -287,8 +286,6 @@ const detailItem = seriesData.find((item) => item.id === detailId);
         value={password}
         onChange={(event) => setPassword(event.target.value)}
       />
-
-
         <div className="auth-actions">
           {!isLoggedIn ? (
             <>
