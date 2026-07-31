@@ -181,7 +181,7 @@ function App() {
   const [updatesOpen, setUpdatesOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState('');
-  const [authMessage, setAuthMessage] = useState('');
+  const [authMessage, setAuthMessage] = useState('Sign in with your email to view the tracker.');
 
   const filteredSeries = useMemo(
     () =>
@@ -283,48 +283,57 @@ const detailItem = seriesData.find((item) => item.id === detailId);
         {authMessage && <p className={`auth-message ${isLoggedIn ? 'success' : ''}`}>{authMessage}</p>}
       </form>
 
-      <header className="app-header">
-        <div>
-          <p className="eyebrow">MangaTrack</p>
-          <h1>Dark kinetic tracker</h1>
-          <p className="subhead">
-            Track reading, latest chapters, and upcoming releases across manga, manhwa, and manhua.
-          </p>
-        </div>
-        <div className="header-actions">
-          <button type="button" className="updates-toggle" onClick={() => setUpdatesOpen(!updatesOpen)}>
-Updates panel
-          </button>
-          <HeaderStats
-            total={seriesData.length}
-            reading={statusCounts.Reading}
-            completed={statusCounts.Completed}
-            newChapters={newChapters}
-          />
-        </div>
-      </header>
+      {!isLoggedIn ? (
+        <section className="auth-gate">
+          <h2>Access required</h2>
+          <p>Please sign in with your email to unlock the tracker and see your content.</p>
+        </section>
+      ) : (
+        <>
+          <header className="app-header">
+            <div>
+              <p className="eyebrow">MangaTrack</p>
+              <h1>Dark kinetic tracker</h1>
+              <p className="subhead">
+                Track reading, latest chapters, and upcoming releases across manga, manhwa, and manhua.
+              </p>
+            </div>
+            <div className="header-actions">
+              <button type="button" className="updates-toggle" onClick={() => setUpdatesOpen(!updatesOpen)}>
+                Updates panel
+              </button>
+              <HeaderStats
+                total={seriesData.length}
+                reading={statusCounts.Reading}
+                completed={statusCounts.Completed}
+                newChapters={newChapters}
+              />
+            </div>
+          </header>
 
-{updatesOpen && <UpdatesPanel updates={updates} />}
+          {updatesOpen && <UpdatesPanel updates={updates} />}
 
-  <div className="toolbar">
-        <FilterTabs statuses={statuses} activeStatus={activeStatus} counts={counts} onSelectStatus={setActiveStatus} />
-        <div className="search-wrap">
-          <input
-            type="search"
-            placeholder="Search series..."
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-          />
-        </div>
-      </div>
+          <div className="toolbar">
+            <FilterTabs statuses={statuses} activeStatus={activeStatus} counts={counts} onSelectStatus={setActiveStatus} />
+            <div className="search-wrap">
+              <input
+                type="search"
+                placeholder="Search series..."
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+              />
+            </div>
+          </div>
 
-<main className="grid-shell">
-        {filteredSeries.map((item) => (
-          <SeriesCard key={item.id} item={item} onOpenDetail={setDetailId} />
-        ))}
-      </main>
+          <main className="grid-shell">
+            {filteredSeries.map((item) => (
+              <SeriesCard key={item.id} item={item} onOpenDetail={setDetailId} />
+            ))}
+          </main>
 
-  {detailItem && <DetailModal item={detailItem} onClose={() => setDetailId(null)} />}
+          {detailItem && <DetailModal item={detailItem} onClose={() => setDetailId(null)} />}
+        </>
+      )}
     </div>
   );
 }

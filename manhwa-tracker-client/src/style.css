@@ -371,6 +371,19 @@ body {
   margin-bottom: 24px;
 }
 
+.auth-gate {
+  padding: 28px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  text-align: center;
+}
+
+.auth-gate h2 {
+  margin-bottom: 8px;
+}
+
 .auth-card-header h2 {
   margin-bottom: 0;
 }
