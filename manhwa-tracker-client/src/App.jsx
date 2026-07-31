@@ -303,6 +303,11 @@ const [password, setPassword] = useState('');
               Log out
             </button>
           )}
+
+          <button type="button" className="auth-button secondary" onClick={handleSignup}>
+            Sign up
+</button>
+
         </div>
 
         {authMessage && <p className={`auth-message ${isLoggedIn ? 'success' : ''}`}>{authMessage}</p>}
