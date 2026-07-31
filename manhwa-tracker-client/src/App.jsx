@@ -179,6 +179,9 @@ function App() {
   const [search, setSearch] = useState('');
   const [detailId, setDetailId] = useState(null);
   const [updatesOpen, setUpdatesOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [email, setEmail] = useState('');
+  const [authMessage, setAuthMessage] = useState('');
 
   const filteredSeries = useMemo(
     () =>
@@ -210,8 +213,76 @@ function App() {
 
 const detailItem = seriesData.find((item) => item.id === detailId);
 
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    if (!email.trim()) {
+      setAuthMessage('Please enter your email to continue.');
+      return;
+    }
+
+    if (!email.includes('@') || !email.includes('.')) {
+      setAuthMessage('Please enter a valid email address.');
+      return;
+    }
+
+    setIsLoggedIn(true);
+    setAuthMessage(`Welcome back, ${email}!`);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setAuthMessage('You have been logged out.');
+  };
+
+  const handleForgotPassword = (event) => {
+    event.preventDefault();
+
+    if (!email.trim()) {
+      setAuthMessage('Enter your email to receive a reset link.');
+      return;
+    }
+
+    setAuthMessage(`A password reset link has been sent to ${email}.`);
+  };
+
  return (
     <div className="page-shell">
+      <form className="auth-card" onSubmit={handleLogin}>
+        <div className="auth-card-header">
+          <p className="eyebrow">Account</p>
+          <h2>{isLoggedIn ? 'Signed in' : 'Sign in'}</h2>
+        </div>
+
+        <label className="auth-label" htmlFor="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          placeholder="you@example.com"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
+
+        <div className="auth-actions">
+          {!isLoggedIn ? (
+            <>
+              <button type="submit" className="auth-button primary">
+                Log in
+              </button>
+              <button type="button" className="auth-button secondary" onClick={handleForgotPassword}>
+                Forgot password
+              </button>
+            </>
+          ) : (
+            <button type="button" className="auth-button secondary" onClick={handleLogout}>
+              Log out
+            </button>
+          )}
+        </div>
+
+        {authMessage && <p className={`auth-message ${isLoggedIn ? 'success' : ''}`}>{authMessage}</p>}
+      </form>
+
       <header className="app-header">
         <div>
           <p className="eyebrow">MangaTrack</p>
