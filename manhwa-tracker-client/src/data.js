@@ -31,3 +31,38 @@ export const updates = [
   { series: 'Is This Hero for Real?', note: 'Chapter 112 read', time: 'Today' },
   { series: 'Reborn as a Vending Machine', note: 'New title added', time: 'Today' },
 ];
+
+
+// data.js
+
+// Fetch the logged-in user's manga list
+export async function getUserManga() {
+  const token = localStorage.getItem('token');
+  const res = await fetch('/api/manga/user', {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+  if (!res.ok) throw new Error('Failed to fetch user manga');
+  return res.json();
+}
+
+// Add a manga to the user's list
+export async function addManga(manga) {
+  const token = localStorage.getItem('token');
+  const res = await fetch('/api/manga/add', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(manga)
+  });
+  if (!res.ok) throw new Error('Failed to add manga');
+  return res.json();
+}
+
+// Fetch external manga from MangaDex
+export async function getExternalManga() {
+  const res = await fetch('/api/manga/external');
+  if (!res.ok) throw new Error('Failed to fetch external manga');
+  return res.json();
+}
