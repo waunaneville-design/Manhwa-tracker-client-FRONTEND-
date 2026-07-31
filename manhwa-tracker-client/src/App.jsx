@@ -268,7 +268,7 @@ const detailItem = seriesData.find((item) => item.id === detailId);
           id="password"
           type="password"
           placeholder="••••••••"
-          value={password}
+          value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
 
