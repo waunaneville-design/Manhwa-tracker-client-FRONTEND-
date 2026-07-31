@@ -271,6 +271,7 @@ const detailItem = seriesData.find((item) => item.id === detailId);
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
+       
 
         <div className="auth-actions">
           {!isLoggedIn ? (
