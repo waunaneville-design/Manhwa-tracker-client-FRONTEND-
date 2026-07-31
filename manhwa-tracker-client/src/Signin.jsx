@@ -29,10 +29,8 @@ const handleSignup = async () => {
   const res = await fetch(`${import.meta.env.VITE_API_URL}/api/signup`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username, password })
+    body: JSON.stringify({ username: email, password })
   });
-  console.log(await res.json());
+  const data = await res.json();
+  setAuthMessage(data.message || 'Signup failed.');
 };
-
-
-export default SignIn;
