@@ -9,12 +9,12 @@ const [updates, setUpdates] = useState([]);
 
 // Added useEffect to fetch backend data
 useEffect(() => {
-  fetch('http://localhost:5000/api/manga')
+  fetch(`${process.env.REACT_APP_API_URL}/api/manga`)
     .then(res => res.json())
     .then(data => setSeriesData(data))
     .catch(err => console.error('Failed to fetch manga:', err));
 
-  fetch('http://localhost:5000/api/updates')
+  fetch(`${process.env.REACT_APP_API_URL}/api/updates`)
     .then(res => res.json())
     .then(data => setUpdates(data))
     .catch(err => console.error('Failed to fetch updates:', err));
